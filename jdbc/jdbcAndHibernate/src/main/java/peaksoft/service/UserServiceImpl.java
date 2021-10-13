@@ -1,6 +1,9 @@
 package peaksoft.service;
 
-import peaksoft.dao.UserDaoJdbcImpl;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import peaksoft.dao.UserDaoHibernateImpl;
+//import peaksoft.dao.UserDaoJdbcImpl;
 import peaksoft.model.User;
 import peaksoft.util.Util;
 
@@ -15,36 +18,33 @@ public class UserServiceImpl extends Util implements UserService {
 
     @Override
     public void createUsersTable() throws SQLException {
-        UserDaoJdbcImpl userDaoJdbc = new UserDaoJdbcImpl();
-        userDaoJdbc.createUsersTable();
+
     }
 
     @Override
     public void dropUsersTable() throws SQLException{
-        UserDaoJdbcImpl userDaoJdbc = new UserDaoJdbcImpl();
-        userDaoJdbc.dropUsersTable();
+        UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
+        userDaoHibernate.dropUsersTable();
     }
 
     @Override
     public void saveUser(String name, String lastName, byte age) throws SQLException {
-        UserDaoJdbcImpl userDaoJdbc = new UserDaoJdbcImpl();
-        userDaoJdbc.saveUser(name, lastName, age);
+
 
     }
 
     public void removeUserById(long id) throws SQLException{
-        UserDaoJdbcImpl userDaoJdbc = new UserDaoJdbcImpl();
-        userDaoJdbc.removeUserById(id);
+        UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
+        userDaoHibernate.removeUserById(id);
     }
 
     public List<User> getAllUsers() throws SQLException{
-        UserDaoJdbcImpl userDaoJdbc = new UserDaoJdbcImpl();
-        return userDaoJdbc.getAllUsers();
+
+        return null;
 
     }
 
     public void cleanUsersTable() throws SQLException{
-        UserDaoJdbcImpl userDaoJdbc = new UserDaoJdbcImpl();
-        userDaoJdbc.cleanUsersTable();
+
     }
 }
